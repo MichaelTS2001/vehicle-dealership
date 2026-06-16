@@ -21,9 +21,14 @@ public class VehicleService {
         return vehicleList;
     }
 
-    //Search for a Vehicles
-    public List<Vehicle> searchVehicles(String vin){
+    //Search for a Vehicle by vin
+    public List<Vehicle> searchByVin(String vin){
         return vehicleRepository.findByVinContainingIgnoreCase(vin);
+    }
+
+    //Search for a Vehicle by color
+    public List<Vehicle> searchByColor(String vehicleColor){
+        return vehicleRepository.findByVehicleColorContainingIgnoreCase(vehicleColor);
     }
 
     //Find a vehicle by their ID
