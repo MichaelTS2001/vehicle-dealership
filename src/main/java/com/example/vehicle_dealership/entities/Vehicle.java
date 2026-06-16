@@ -1,7 +1,9 @@
 package com.example.vehicle_dealership.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -51,6 +53,16 @@ public class Vehicle {
     @Column(nullable = false, length = 20)
     private String vehicleModel;
 
+    @NotBlank(message = "Vehicle color is required")
+    @Size(min = 1, max = 20, message = "Vehicle color must be between 1 and 20 characters")
+    @Column(nullable = false, length = 20)
+    private String vehicleColor;
 
+    @Positive(message = "Vehicle odometer cannot be negative")
+    @Column(nullable = false, length = 10)
+    private Double vehicleOdometer;
 
+    @DecimalMin(value = "0", message = "Vehicle price cannot be negative")
+    @Column(nullable = false, length = 10)
+    private Double vehiclePrice;
 }
