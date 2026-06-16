@@ -64,7 +64,6 @@ public class VehicleController {
         }
     }
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVehicle(@PathVariable Long id){
         boolean deleteSuccessful = this.vehicleService.delete(id);
