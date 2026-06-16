@@ -33,10 +33,10 @@ public class Vehicle {
     @Column(nullable = false, length = 50)
     private String model;
 
-    @NotBlank(message = "VIN is required")
+    @NotBlank(message = "Vin is required")
     @Size(min = 5, max = 5, message = "VIN number must be 5 characters")
     @Column(nullable = false, length = 5)
-    private String VIN;
+    private String vin;
 
     @NotBlank(message = "Vehicle year is required")
     @Size(min = 1000, max = 9999, message = "Vehicle year must be between 1000 and 9999 characters")
@@ -44,9 +44,9 @@ public class Vehicle {
     private String year;
 
     @NotBlank(message = "Vehicle type is required")
-    @Size(min = 1, max = 20, message = "Vehicle year must be between 1 and 20 characters")
+    @Size(min = 1, max = 20, message = "Vehicle type must be between 1 and 20 characters")
     @Column(nullable = false, length = 20)
-    private String vehicleModel;
+    private String vehicleType;
 
     @NotBlank(message = "Vehicle color is required")
     @Size(min = 1, max = 20, message = "Vehicle color must be between 1 and 20 characters")
@@ -61,13 +61,14 @@ public class Vehicle {
     @Column(nullable = false, length = 10)
     private Double vehiclePrice;
 
-    public Vehicle(Long id, String make, String model, String VIN, String year, String vehicleModel, String vehicleColor, Double vehicleOdometer, Double vehiclePrice) {
+    public Vehicle(Long id, String make, String model, String vin, String year, String vehicleType, String vehicleColor,
+                   Double vehicleOdometer, Double vehiclePrice) {
         this.id = id;
         this.make = make;
         this.model = model;
-        this.VIN = VIN;
+        this.vin = vin;
         this.year = year;
-        this.vehicleModel = vehicleModel;
+        this.vehicleType = vehicleType;
         this.vehicleColor = vehicleColor;
         this.vehicleOdometer = vehicleOdometer;
         this.vehiclePrice = vehiclePrice;
@@ -100,12 +101,12 @@ public class Vehicle {
         this.model = model;
     }
 
-    public String getVIN() {
-        return VIN;
+    public String getVin() {
+        return vin;
     }
 
-    public void setVIN(String VIN) {
-        this.VIN = VIN;
+    public void setVin(String vin) {
+        this.vin = vin;
     }
 
     public String getYear() {
@@ -116,12 +117,12 @@ public class Vehicle {
         this.year = year;
     }
 
-    public String getVehicleModel() {
-        return vehicleModel;
+    public String getVehicleType() {
+        return vehicleType;
     }
 
-    public void setVehicleModel(String vehicleModel) {
-        this.vehicleModel = vehicleModel;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
     public String getVehicleColor() {

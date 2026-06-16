@@ -24,7 +24,7 @@ public class VehicleController {
     //GET -> /api/vehicles
     @GetMapping
     public ResponseEntity<List<Vehicle>> getAllVehicles(
-            @RequestParam(value = "VIN", required = false) String vin
+            @RequestParam(value = "vin", required = false) String vin
     ){
         if(vin == null){
             List<Vehicle> vehicles = this.vehicleService.getAllVehicles();
@@ -48,6 +48,7 @@ public class VehicleController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVehicle(@PathVariable Long id){

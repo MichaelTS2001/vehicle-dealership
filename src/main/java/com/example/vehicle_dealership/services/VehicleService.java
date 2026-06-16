@@ -1,7 +1,7 @@
 package com.example.vehicle_dealership.services;
 
 import com.example.vehicle_dealership.entities.Vehicle;
-import com.example.vehicle_dealership.repositories.VDRepository;
+import com.example.vehicle_dealership.repositories.vehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,48 +12,48 @@ import java.util.Optional;
 @Service
 public class VehicleService {
     @Autowired
-    private VDRepository vdRepository;
+    private vehicleRepository vehicleRepository;
 
     //get All Vehicles
     public List<Vehicle> getAllVehicles(){
-        List<Vehicle> vehicleList = vdRepository.findAll();
+        List<Vehicle> vehicleList = vehicleRepository.findAll();
 
         return vehicleList;
     }
 
     //Search for a Vehicles
-    public List<Vehicle> searchVehicles(String vehicleVin){
-        return vdRepository.findByNameContainingIgnorePrice(vehicleVin);
+    public List<Vehicle> searchVehicles(String vin){
+        return vehicleRepository.findByVinContainingIgnoreCase(vin);
     }
 
     //Find a vehicle by their ID
     public Optional<Vehicle> getVehicleId(Long id){
-        var vehicle = vdRepository.findById(id);
+        var vehicle = vehicleRepository.findById(id);
 
         return vehicle;
     }
 
     //Delete Vehicle
     public boolean delete(Long id){
-        Optional<Vehicle> vehicleToDelete = vdRepository.findById(id);
+        Optional<Vehicle> vehicleToDelete = vehicleRepository.findById(id);
 
         if(vehicleToDelete.isEmpty()){
             return false;
         }
 
-        vdRepository.delete(vehicleToDelete.get());
+        vehicleRepository.delete(vehicleToDelete.get());
         return true;
     }
 
     public Vehicle create(Vehicle vehicle){
-        Vehicle newVehicle = vdRepository.save(vehicle);
+        Vehicle newVehicle = vehicleRepository.save(vehicle);
 
         return newVehicle;
     }
 
     public Vehicle update(Long id, Vehicle vehicle){
         //look to see if there is a vehicle with that id
-        Optional<Vehicle> updateVehicle = vdRepository.findById(id);
+        Optional<Vehicle> updateVehicle = vehicleRepository.findById(id);
 
         if(updateVehicle.isEmpty()){
             return null;
@@ -64,14 +64,14 @@ public class VehicleService {
 
         vehicleToUpdate.setMake(vehicle.getMake());
         vehicleToUpdate.setModel(vehicle.getModel());
-        vehicleToUpdate.setVehicleModel(vehicle.getVehicleModel());
+        vehicleToUpdate.setVehicleType(vehicle.getVehicleType());
         vehicleToUpdate.setYear(vehicle.getYear());
-        vehicleToUpdate.setVIN(vehicle.getVIN());
+        vehicleToUpdate.setVin(vehicle.getVin());
         vehicleToUpdate.setVehicleColor(vehicle.getVehicleColor());
         vehicleToUpdate.setVehicleOdometer(vehicle.getVehicleOdometer());
         vehicleToUpdate.setVehiclePrice(vehicle.getVehiclePrice());
 
-        vdRepository.save(vehicleToUpdate);
+        vehicleRepository.save(vehicleToUpdate);
 
         return vehicleToUpdate;
     }
