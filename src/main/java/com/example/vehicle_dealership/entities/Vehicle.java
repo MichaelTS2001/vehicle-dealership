@@ -12,11 +12,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "vehicles")
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-
 public class Vehicle {
 
     //Always start with the entity
@@ -65,4 +60,91 @@ public class Vehicle {
     @DecimalMin(value = "0", message = "Vehicle price cannot be negative")
     @Column(nullable = false, length = 10)
     private Double vehiclePrice;
+
+    public Vehicle(Long id, String make, String model, String VIN, String year, String vehicleModel, String vehicleColor, Double vehicleOdometer, Double vehiclePrice) {
+        this.id = id;
+        this.make = make;
+        this.model = model;
+        this.VIN = VIN;
+        this.year = year;
+        this.vehicleModel = vehicleModel;
+        this.vehicleColor = vehicleColor;
+        this.vehicleOdometer = vehicleOdometer;
+        this.vehiclePrice = vehiclePrice;
+    }
+
+    public Vehicle() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getVIN() {
+        return VIN;
+    }
+
+    public void setVIN(String VIN) {
+        this.VIN = VIN;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getVehicleModel() {
+        return vehicleModel;
+    }
+
+    public void setVehicleModel(String vehicleModel) {
+        this.vehicleModel = vehicleModel;
+    }
+
+    public String getVehicleColor() {
+        return vehicleColor;
+    }
+
+    public void setVehicleColor(String vehicleColor) {
+        this.vehicleColor = vehicleColor;
+    }
+
+    public Double getVehicleOdometer() {
+        return vehicleOdometer;
+    }
+
+    public void setVehicleOdometer(Double vehicleOdometer) {
+        this.vehicleOdometer = vehicleOdometer;
+    }
+
+    public Double getVehiclePrice() {
+        return vehiclePrice;
+    }
+
+    public void setVehiclePrice(Double vehiclePrice) {
+        this.vehiclePrice = vehiclePrice;
+    }
 }
