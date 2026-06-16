@@ -22,8 +22,8 @@ public class VehicleService {
     }
 
     //Search for a Vehicles
-    public List<Vehicle> searchVehicles(String vehicleName){
-        return vdRepository.findByNameContainingIgnorePrice(vehicleName);
+    public List<Vehicle> searchVehicles(String vehicleVin){
+        return vdRepository.findByNameContainingIgnorePrice(vehicleVin);
     }
 
     //Find a vehicle by their ID
