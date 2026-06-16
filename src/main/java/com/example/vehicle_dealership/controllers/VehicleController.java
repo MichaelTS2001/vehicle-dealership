@@ -50,7 +50,7 @@ public class VehicleController {
     }
     
     //GET -> /api/vehicles?color=red
-    @GetMapping("/{find-color}")
+    @GetMapping("/find-color")
     public ResponseEntity<List<Vehicle>> searchByColor(
             @RequestParam(value = "color", required = true) String vehicleColor){
         
