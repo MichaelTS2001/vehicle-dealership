@@ -32,6 +32,11 @@ public class VehicleService {
         return vehicleRepository.findByVehicleColorContainingIgnoreCase(vehicleColor);
     }
 
+    //Search for a Vehicle by make
+    public List<Vehicle> searchByMake(String make){
+        return vehicleRepository.findByMakeContainingIgnoreCase(make);
+    }
+
     //Find a vehicle by their ID
     public Optional<Vehicle> getVehicleId(Long id){
         var vehicle = vehicleRepository.findById(id);

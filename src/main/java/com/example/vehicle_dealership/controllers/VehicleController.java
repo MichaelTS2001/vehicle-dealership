@@ -49,7 +49,7 @@ public class VehicleController {
         }
     }
     
-    //GET -> /api/vehicles?color=red
+    //GET -> /api/vehicles/find-color?color=red
     @GetMapping("/find-color")
     public ResponseEntity<List<Vehicle>> searchByColor(
             @RequestParam(value = "color", required = true) String vehicleColor){
@@ -64,12 +64,26 @@ public class VehicleController {
         }
     }
 
-    //GET -> /api/vehicles?vin=?????
+    //GET -> /api/vehicles/find-vin?vin=?????
     @GetMapping("/find-vin")
     public ResponseEntity<List<Vehicle>> searchByVin(
             @RequestParam(value = "vin", required = true) String vin) {
 
         List<Vehicle> vehicles = this.vehicleService.searchByVin(vin);
+
+        if (vehicles.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(vehicles, HttpStatus.OK);
+        }
+    }
+
+    //GET -> /api/vehicles/find-make?make=?????
+    @GetMapping("/find-make")
+    public ResponseEntity<List<Vehicle>> searchByMake(
+            @RequestParam(value = "make", required = true) String make) {
+
+        List<Vehicle> vehicles = this.vehicleService.searchByMake(make);
 
         if (vehicles.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
