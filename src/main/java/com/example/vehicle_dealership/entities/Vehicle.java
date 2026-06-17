@@ -39,8 +39,8 @@ public class Vehicle {
     private String vin;
 
     @NotBlank(message = "Vehicle year is required")
-    @Size(min = 1000, max = 9999, message = "Vehicle year must be between 1000 and 9999 characters")
-    @Column(nullable = false, length = 9999)
+    @Size(min = 4, max = 4, message = "Vehicle year must be 4 characters")
+    @Column(nullable = false, length = 4)
     private String year;
 
     @NotBlank(message = "Vehicle type is required")

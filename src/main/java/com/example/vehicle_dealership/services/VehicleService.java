@@ -47,6 +47,11 @@ public class VehicleService {
         return vehicleRepository.findByVehicleTypeContainingIgnoreCase(vehicleType);
     }
 
+    //Search for a Vehicle by their year
+    public List<Vehicle> searchByYear(String year){
+        return vehicleRepository.findByYearContainingIgnoreCase(year);
+    }
+
     //Find a vehicle by their ID
     public Optional<Vehicle> getVehicleId(Long id){
         var vehicle = vehicleRepository.findById(id);

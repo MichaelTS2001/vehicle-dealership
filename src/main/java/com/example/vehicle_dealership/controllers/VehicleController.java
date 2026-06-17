@@ -120,6 +120,20 @@ public class VehicleController {
         }
     }
 
+    //GET -> /api/vehicles/find-year?year=????
+    @GetMapping("/find-year")
+    public ResponseEntity<List<Vehicle>> searchByYear(
+            @RequestParam(value = "year", required = true) String year) {
+
+        List<Vehicle> vehicles = this.vehicleService.searchByYear(year);
+
+        if (vehicles.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(vehicles, HttpStatus.OK);
+        }
+    }
+
 
 
     @DeleteMapping("/{id}")
