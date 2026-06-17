@@ -134,6 +134,36 @@ public class VehicleController {
         }
     }
 
+    //GET -> /api/vehicles/find-odometer?minOdometer=100000&maxOdometer=200000
+    @GetMapping("/find-odometer")
+    public ResponseEntity<List<Vehicle>> searchByOdometer(
+            @RequestParam(value = "minOdometer", required = true) Double minOdometer,
+            @RequestParam(value = "maxOdometer", required = true) Double maxOdometer) {
+
+        List<Vehicle> vehicles = this.vehicleService.searchByOdometer(minOdometer, maxOdometer);
+
+        if (vehicles.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(vehicles, HttpStatus.OK);
+        }
+    }
+
+    //GET -> /api/vehicles/find-price?minPrice=????&maxPrice=????
+    @GetMapping("/find-price")
+    public ResponseEntity<List<Vehicle>> searchByPrice(
+            @RequestParam(value = "minPrice", required = true) Double minPrice,
+            @RequestParam(value = "maxPrice", required = true) Double maxPrice) {
+
+        List<Vehicle> vehicles = this.vehicleService.searchByPrice(minPrice, maxPrice);
+
+        if (vehicles.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(vehicles, HttpStatus.OK);
+        }
+    }
+
 
 
     @DeleteMapping("/{id}")

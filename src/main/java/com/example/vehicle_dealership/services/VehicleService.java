@@ -52,6 +52,16 @@ public class VehicleService {
         return vehicleRepository.findByYearContainingIgnoreCase(year);
     }
 
+    //Search for a Vehicle by their odometer range
+    public List<Vehicle> searchByOdometer(Double min, Double max){
+        return vehicleRepository.findByVehicleOdometerBetween(min, max);
+    }
+
+    //Search for a Vehicle by their pice
+    public List<Vehicle> searchByPrice(Double min, Double max){
+        return vehicleRepository.findByVehiclePriceBetween(min, max);
+    }
+
     //Find a vehicle by their ID
     public Optional<Vehicle> getVehicleId(Long id){
         var vehicle = vehicleRepository.findById(id);
