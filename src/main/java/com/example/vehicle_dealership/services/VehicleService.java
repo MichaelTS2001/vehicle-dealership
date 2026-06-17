@@ -23,6 +23,7 @@ public class VehicleService {
 
     //Search for a Vehicle by vin
     public List<Vehicle> searchByVin(String vin){
+
         return vehicleRepository.findByVinContainingIgnoreCase(vin);
     }
 

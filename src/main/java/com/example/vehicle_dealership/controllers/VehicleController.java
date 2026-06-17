@@ -64,6 +64,20 @@ public class VehicleController {
         }
     }
 
+    //GET -> /api/vehicles?vin=?????
+    @GetMapping("/find-vin")
+    public ResponseEntity<List<Vehicle>> searchByVin(
+            @RequestParam(value = "vin", required = true) String vin) {
+
+        List<Vehicle> vehicles = this.vehicleService.searchByVin(vin);
+
+        if (vehicles.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(vehicles, HttpStatus.OK);
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVehicle(@PathVariable Long id){
         boolean deleteSuccessful = this.vehicleService.delete(id);
