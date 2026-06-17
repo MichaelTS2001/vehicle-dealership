@@ -92,6 +92,36 @@ public class VehicleController {
         }
     }
 
+    //GET -> /api/vehicles/find-model?model=?????
+    @GetMapping("/find-model")
+    public ResponseEntity<List<Vehicle>> searchByModel(
+            @RequestParam(value = "model", required = true) String model) {
+
+        List<Vehicle> vehicles = this.vehicleService.searchByModel(model);
+
+        if (vehicles.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(vehicles, HttpStatus.OK);
+        }
+    }
+
+    //GET -> /api/vehicles/find-type?type=?????
+    @GetMapping("/find-type")
+    public ResponseEntity<List<Vehicle>> searchByVehicleType(
+            @RequestParam(value = "type", required = true) String type) {
+
+        List<Vehicle> vehicles = this.vehicleService.searchByVehicleType(type);
+
+        if (vehicles.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(vehicles, HttpStatus.OK);
+        }
+    }
+
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVehicle(@PathVariable Long id){
         boolean deleteSuccessful = this.vehicleService.delete(id);

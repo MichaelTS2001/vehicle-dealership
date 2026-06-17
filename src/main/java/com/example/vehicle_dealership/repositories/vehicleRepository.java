@@ -16,10 +16,10 @@ public interface vehicleRepository extends JpaRepository<Vehicle, Long> {
     List<Vehicle> findByVehicleColorContainingIgnoreCase(String vehicleColor);
 
     List<Vehicle> findByMakeContainingIgnoreCase(String make);
-//
-//    List<Vehicle> findByModelContainingIgnoreCase(String model);
-//
-//    List<Vehicle> findByVehicleTypeContainingIgnoreCase(String vehicleType);
+
+    List<Vehicle> findByModelContainingIgnoreCase(String model);
+
+    List<Vehicle> findByVehicleTypeContainingIgnoreCase(String vehicleType);
 //
 //    List<Vehicle> findByPriceContainingIgnoreCase(String price);
 //

@@ -37,6 +37,16 @@ public class VehicleService {
         return vehicleRepository.findByMakeContainingIgnoreCase(make);
     }
 
+    //Search for a Vehicle by model
+    public List<Vehicle> searchByModel(String model){
+        return vehicleRepository.findByModelContainingIgnoreCase(model);
+    }
+
+    //Search for a Vehicle by their type
+    public List<Vehicle> searchByVehicleType(String vehicleType){
+        return vehicleRepository.findByVehicleTypeContainingIgnoreCase(vehicleType);
+    }
+
     //Find a vehicle by their ID
     public Optional<Vehicle> getVehicleId(Long id){
         var vehicle = vehicleRepository.findById(id);
